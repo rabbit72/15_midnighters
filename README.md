@@ -26,21 +26,21 @@ Running on Windows is similar.
 ```bash
 $ python3 seek_dev_nighters.py
 Midnight's owls:
-ValentinBugakov
-pokabons
-RomanGagarin
-pspiskunov
-id45197784
-tonkytonky
-oleg.smedyuk
-jarrymousemouse
-alevinok
-АлексейЛескин
-id357826325
-shtihl_fd
 0lekciy
-rabbit72rus
+RomanGagarin
+ValentinBugakov
+alevinok
 id2794684
+id357826325
+id45197784
+jarrymousemouse
+oleg.smedyuk
+pokabons
+pspiskunov
+rabbit72rus
+shtihl_fd
+tonkytonky
+АлексейЛескин
 ```
 # Project Goals
 
