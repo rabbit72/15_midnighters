@@ -24,14 +24,6 @@ def fetch_attempts():
             break
 
 
-def get_midnight_this_day(datetime):
-    return datetime.replace(hour=0, minute=0, second=0, microsecond=0)
-
-
-def get_morning_this_day(datetime):
-    return datetime.replace(hour=6, minute=0, second=0, microsecond=0)
-
-
 def get_midnights_owls(attempts):
     midnights_owls = set()
     for attempt in attempts:
@@ -40,9 +32,9 @@ def get_midnights_owls(attempts):
             attempt['timestamp'],
             tz=attempt_timezone
         )
-        midnight = get_midnight_this_day(attempt_time_local)
-        morning = get_morning_this_day(attempt_time_local)
-        if midnight < attempt_time_local < morning:
+        midnight = 0
+        morning = 6
+        if midnight <= attempt_time_local.hour < morning:
             midnights_owls.add(attempt['username'])
     return sorted(list(midnights_owls))
 
