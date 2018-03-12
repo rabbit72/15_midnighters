@@ -49,8 +49,7 @@ def get_midnights_owls(attempts):
 
 if __name__ == '__main__':
     try:
-        attempts = [attempt for attempt in fetch_attempts()]
-        midnights_owls = get_midnights_owls(attempts)
+        midnights_owls = get_midnights_owls(fetch_attempts())
         print("Midnight's owls:")
         print('\n'.join(midnights_owls))
     except requests.RequestException:
