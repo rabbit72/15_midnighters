@@ -12,7 +12,8 @@ def load_page_with_attempts(page_number):
 
 
 def get_number_of_pages():
-    return load_page_with_attempts(1)['number_of_pages']
+    first_page = 1
+    return load_page_with_attempts(first_page)['number_of_pages']
 
 
 def load_attempts():
