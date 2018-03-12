@@ -11,7 +11,7 @@ def fetch_page_with_attempts(page_number):
     return response.json()
 
 
-def fetch_attempts():
+def load_attempts():
     page_number = 1
     while True:
         response = fetch_page_with_attempts(page_number)
@@ -26,14 +26,14 @@ def fetch_attempts():
 
 def get_midnights_owls(attempts):
     midnights_owls = set()
+    midnight = 0
+    morning = 6
     for attempt in attempts:
         attempt_timezone = pytz.timezone(attempt['timezone'])
         attempt_time_local = datetime.fromtimestamp(
             attempt['timestamp'],
             tz=attempt_timezone
         )
-        midnight = 0
-        morning = 6
         if midnight <= attempt_time_local.hour < morning:
             midnights_owls.add(attempt['username'])
     return sorted(list(midnights_owls))
@@ -41,7 +41,7 @@ def get_midnights_owls(attempts):
 
 if __name__ == '__main__':
     try:
-        midnights_owls = get_midnights_owls(fetch_attempts())
+        midnights_owls = get_midnights_owls(load_attempts())
         print("Midnight's owls:")
         print('\n'.join(midnights_owls))
     except requests.RequestException:
