@@ -11,7 +11,7 @@ def fetch_page_with_attempts(page_number):
     return response.json()
 
 
-def load_attempts():
+def fetch_attempts():
     page_number = 1
     while True:
         response = fetch_page_with_attempts(page_number)
@@ -49,7 +49,7 @@ def get_midnights_owls(attempts):
 
 if __name__ == '__main__':
     try:
-        attempts = [attempt for attempt in load_attempts()]
+        attempts = [attempt for attempt in fetch_attempts()]
         midnights_owls = get_midnights_owls(attempts)
         print("Midnight's owls:")
         print('\n'.join(midnights_owls))
