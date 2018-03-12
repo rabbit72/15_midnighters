@@ -3,7 +3,7 @@ import pytz
 from datetime import datetime
 
 
-def load_page_with_attempts(page_number):
+def fetch_page_with_attempts(page_number):
     url_with_attempts = ('https://devman.org/'
                          'api/challenges/solution_attempts')
     params = {'page': page_number}
@@ -13,13 +13,13 @@ def load_page_with_attempts(page_number):
 
 def get_number_of_pages():
     first_page = 1
-    return load_page_with_attempts(first_page)['number_of_pages']
+    return fetch_page_with_attempts(first_page)['number_of_pages']
 
 
 def load_attempts():
     pages_amount = get_number_of_pages()
     for page_number in range(1, pages_amount + 1):
-        attempts_in_page = load_page_with_attempts(page_number)['records']
+        attempts_in_page = fetch_page_with_attempts(page_number)['records']
         for attempt in attempts_in_page:
             yield attempt
 
