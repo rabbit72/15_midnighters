@@ -11,17 +11,17 @@ def fetch_page_with_attempts(page_number):
     return response.json()
 
 
-def get_number_of_pages():
-    first_page = 1
-    return fetch_page_with_attempts(first_page)['number_of_pages']
-
-
 def load_attempts():
-    pages_amount = get_number_of_pages()
-    for page_number in range(1, pages_amount + 1):
-        attempts_in_page = fetch_page_with_attempts(page_number)['records']
+    page_number = 1
+    while True:
+        response = fetch_page_with_attempts(page_number)
+        attempts_in_page = response['records']
         for attempt in attempts_in_page:
             yield attempt
+        number_of_pages = response['number_of_pages']
+        page_number += 1
+        if page_number > number_of_pages:
+            break
 
 
 def get_midnight_this_day(datetime):
